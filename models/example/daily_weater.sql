@@ -1,18 +1,14 @@
-{{ config(
-    schema='demo_schema'
-) }}
 with
     daily_weather as (
 
         select date(time) as daily_weather, weather, temp, pressure, humidity, clouds
         from {{ source("demo", "weather") }}
 
-        limit 10
     ),
 
     daily_weather_agg as (
         select
-            daily_weather,
+            dateadd(YEAR,1,daily_weather) as daily_weather,
             weather,
             round(avg(temp), 2) as avg_temp,
             round(avg(pressure), 2) as avg_pressure,
@@ -37,3 +33,4 @@ with
 
         select *
         from daily_weather_agg
+        order by DAILY_WEATHER desc
