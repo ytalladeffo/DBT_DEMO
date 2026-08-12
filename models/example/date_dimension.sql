@@ -9,7 +9,7 @@ WITH CTE AS (
         SELECT 
     Date(STARTED_AT) AS DATE_STARTED_AT,
     HOUR(STARTED_AT) AS HOUR_STARTED_AT,
-    {{day_type('START_AT')}} AS DAY_TYPE,
+    {{day_type('STARTED_AT')}} AS DAY_TYPE,
 
     {{get_season('STARTED_AT')}} AS STATION_OF_YEAR
 
