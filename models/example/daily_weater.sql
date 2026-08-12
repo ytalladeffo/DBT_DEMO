@@ -1,3 +1,6 @@
+{{ config(
+    schema='demo_schema'
+) }}
 with
     daily_weather as (
 
